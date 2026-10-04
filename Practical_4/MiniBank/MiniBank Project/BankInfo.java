@@ -1,0 +1,1 @@
+record BankInfo(String name, String address) {}

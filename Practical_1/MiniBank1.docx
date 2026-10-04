@@ -1,0 +1,86 @@
+Practical 1
+
+BankEnum.java
+
+enum BankEnum{
+    OPEN_ACCOUNT, DEPOSIT, WITHDRAW, TRANSFER, EXIT;
+}
+
+BankInfo.java 
+
+record BankInfo(String name, String address) {}
+
+MenuOption.java
+
+public class MenuOption {
+
+    public static final String OPEN_ACCOUNT = null;
+    public static final String DEPOSIT = null;
+    public static final String WITHDRAW = null;
+    public static final String TRANSFER = null;
+    public static final String EXIT = null;
+
+}
+
+MiniBank.java
+
+import java.util.Scanner;
+
+public class MiniBank {
+    public static void main (String[] args) {
+
+    BankInfo info = new BankInfo("Bank", "Surat");
+
+    System.out.println("======================");
+    System.out.println("Welcome to MiniBank!");
+    System.out.println("======================");
+    System.out.println("  "+ info.name() + " - " + info.address());
+
+    Scanner scanner = new Scanner(System.in);
+    boolean running = true;
+
+    while (running) {
+        printMenu();
+        System.out.print("Enter your choice: ");
+        int choice = scanner.nextInt();
+       
+        BankEnum option = switch (choice) {
+            case 1 -> BankEnum.OPEN_ACCOUNT;
+            case 2 -> BankEnum.DEPOSIT;
+            case 3 -> BankEnum.WITHDRAW;
+            case 4 -> BankEnum.TRANSFER;
+            case 5 -> BankEnum.EXIT;
+            default -> {
+                System.out.println("Invalid choice. Please try again.");
+                yield null;
+            }
+        };
+        String message = switch (option) {
+            case OPEN_ACCOUNT -> "Open Account - To be implemented in later lab ";
+            case DEPOSIT -> "Deposit - To be implemented in later lab";
+            case WITHDRAW -> "Withdraw - To be implemented in later lab";
+            case TRANSFER -> "Transfer - To be implemented in later lab";
+            case EXIT -> {
+                System.out.println("Exiting the program. Goodbye!");
+                running = false;
+                yield null;
+            }
+            default -> null;
+        };
+        if (message != null) {
+            System.out.println(message);
+        }
+    };
+    scanner.close();
+}
+private static void printMenu() {
+    System.out.println("\nPlease select an option:");
+    System.out.println("1. Open Account");
+    System.out.println("2. Deposit");
+    System.out.println("3. Withdraw");
+    System.out.println("4. Transfer");
+    System.out.println("5. Exit");
+}
+}
+
+
