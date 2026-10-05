@@ -2,6 +2,9 @@ package model;
 
 import java.util.Objects;
 
+import model.InterestBearing;
+import model.Transactable;
+
 public abstract class Account implements Transactable, InterestBearing {
     private static int accountCounter = 0;
 

@@ -6,6 +6,16 @@ import model.annotation.Id;
 import model.annotation.MaxLength;
 import model.annotation.Positive;
 
+interface Transactable {
+    void deposit(long amount);
+    boolean withdraw(long amount);
+    long getBalance();
+}
+
+interface InterestBearing {
+    double interestRate();
+}
+
 public abstract class Account implements Transactable, InterestBearing {
     private static int accountCounter = 0;
 
