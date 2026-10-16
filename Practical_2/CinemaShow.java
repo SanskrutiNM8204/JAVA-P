@@ -32,6 +32,10 @@ public class CinemaShow {
         return seatsAvailable;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
     public static int getTotalBooked() {
         return totalBooked;
     }

@@ -36,6 +36,10 @@ public class Thermostat {
         return temperature;
     }
 
+    public String getLocation() {
+        return location;
+    }
+
     public static int getActiveCount() {
         return activeCount;
     }
@@ -43,6 +47,8 @@ public class Thermostat {
     public static void main(String[] args) {
         Thermostat t1 = new Thermostat("Living Room");
         Thermostat t2 = new Thermostat("Bedroom");
+
+        System.out.println("Bedroom thermostat: " + t2.getLocation() + " -> " + t2.getTemperature());
 
         for (int i = 0; i < 10; i++) {
             t1.raise();

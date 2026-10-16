@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class CDriver {
     public static void main (String []args) {
     Card[] cards = new Card[5];

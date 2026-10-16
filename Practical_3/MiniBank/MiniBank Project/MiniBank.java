@@ -52,7 +52,7 @@ public class MiniBank {
             case 2 -> {
                 System.out.print("Enter account number (1-3): ");
                 int depositAccountIndex = Integer.parseInt(scanner.nextLine().trim()) - 1;
-                System.out.print("Enter amount to deposit: ");1
+                System.out.print("Enter amount to deposit: ");
                 long depositAmount = Long.parseLong(scanner.nextLine().trim());
 
                 if (depositAccountIndex >= 0 && depositAccountIndex < accounts.length) {

@@ -1,6 +1,79 @@
+import java.util.Objects;
 import java.util.Scanner;
 
 public class MiniBank {
+    private static final class BankInfo {
+        private final String name;
+        private final String address;
+
+        private BankInfo(String name, String address) {
+            this.name = name;
+            this.address = address;
+        }
+
+        public String name() {
+            return name;
+        }
+
+        public String address() {
+            return address;
+        }
+    }
+
+    private static final class Account {
+        private final String accountHolderName;
+        private long balance;
+
+        private Account(String accountHolderName) {
+            this(accountHolderName, 0L);
+        }
+
+        private Account(String accountHolderName, long balance) {
+            this.accountHolderName = accountHolderName;
+            this.balance = balance;
+        }
+
+        public void deposit(long amount) {
+            if (amount > 0) {
+                balance += amount;
+            }
+        }
+
+        public boolean withdraw(long amount) {
+            if (amount > 0 && amount <= balance) {
+                balance -= amount;
+                return true;
+            }
+            return false;
+        }
+
+        public long getBalance() {
+            return balance;
+        }
+
+        @Override
+        public String toString() {
+            return "Account{accountHolderName='" + accountHolderName + "', balance=" + balance + '}';
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj) {
+                return true;
+            }
+            if (obj == null || getClass() != obj.getClass()) {
+                return false;
+            }
+            Account account = (Account) obj;
+            return balance == account.balance && Objects.equals(accountHolderName, account.accountHolderName);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(accountHolderName, balance);
+        }
+    }
+
     public static void main (String[] args) {
 
     BankInfo info = new BankInfo("Bank", "Surat");
